@@ -1,0 +1,87 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap");
+
+@import "tailwindcss";
+
+:root {
+  --cream: #F9F5EF;
+  --cream-dark: #EDE8DF;
+  --maroon: #800020;
+  --maroon-light: #C4607A;
+  --maroon-dark: #5C0016;
+  --charcoal: #1A1A1A;
+  --charcoal-soft: #3A3330;
+  --text-mid: #6B6058;
+  --text-light: #9E9186;
+  --glass-bg: rgba(255, 255, 255, 0.55);
+  --glass-border: rgba(128, 0, 32, 0.18);
+  --shadow-soft: 0 8px 40px rgba(26, 18, 8, 0.07);
+  --shadow-maroon: 0 4px 30px rgba(128, 0, 32, 0.2);
+  --nav-h: 72px;
+}
+
+[data-theme="dark"] {
+  --cream: #111010;
+  --cream-dark: #1C1915;
+  --maroon: #9B1030;
+  --maroon-light: #8A002C;
+  --charcoal: #F5F0EA;
+  --charcoal-soft: #D9D0C4;
+  --text-mid: #A89F94;
+  --text-light: #7A7068;
+  --glass-bg: rgba(25, 22, 18, 0.7);
+  --glass-border: rgba(155, 16, 48, 0.15);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Jost", system-ui, sans-serif;
+  background-color: var(--cream);
+  color: var(--charcoal);
+  overflow-x: hidden;
+  transition: background-color 0.4s, color 0.4s;
+}
+
+.eyebrow {
+  font-family: "Jost", system-ui, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 400;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--maroon);
+}
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--cream-dark); }
+::-webkit-scrollbar-thumb { background: var(--maroon); border-radius: 4px; }
+
+:focus-visible { outline: 2px solid var(--maroon); outline-offset: 2px; }
+
+@keyframes shimmer {
+  from { background-position: 200% 0; }
+  to { background-position: -200% 0; }
+}
+.animate-shimmer {
+  background: linear-gradient(90deg, var(--cream-dark) 25%, var(--cream) 50%, var(--cream-dark) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
